@@ -111,7 +111,7 @@ void loop() {
   // Get values for each channel
   ch1Value = readChannel(CH1, -100, 100, 0);
   ch2Value = readChannel(CH2, -100, 100, 0);
-  ch3Value = readChannel(CH3, 0, 255, 0);
+  ch3Value = readChannel(CH3, 0, 254, 0);
   ch4Value = readChannel(CH4, -100, 100, 0);
   ch5Value = readChannel(CH5, 0, 100, 0);
   ch6Value = readChannel(CH6, 0, 100, 0);
