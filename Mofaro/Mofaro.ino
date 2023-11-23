@@ -176,6 +176,7 @@ void loop() {
     digitalWrite(LOW3, 1);
     digitalWrite(LOW4, 1);
   }
+
   // Reverse
   if (ch10Value == 0) {
     digitalWrite(REVERSE1, 1);
@@ -189,12 +190,32 @@ void loop() {
     digitalWrite(REVERSE4, 0);
   }
 
-  // Acceleration
-  if (ch3Value > -1) {
-    analogWrite(ACC1, ch3Value);
-    analogWrite(ACC2, ch3Value);
-    analogWrite(ACC3, ch3Value);
-    analogWrite(ACC4, ch3Value);
+  // 2WD an 4WD acceleration
+  if (ch7Value == 1) {  // 4WD
+    if (ch3Value > -1) {
+      analogWrite(ACC1, ch3Value);
+      analogWrite(ACC2, ch3Value);
+      analogWrite(ACC3, ch3Value);
+      analogWrite(ACC4, ch3Value);
+    } else {
+      analogWrite(ACC1, 0);
+      analogWrite(ACC2, 0);
+      analogWrite(ACC3, 0);
+      analogWrite(ACC4, 0);
+    }
+  } else if (ch7Value == 0) {  //2WD Robot Pushed by rear wheels.
+    if (ch3Value > -1) {
+      analogWrite(ACC1, 0);
+      analogWrite(ACC2, 0);
+      analogWrite(ACC3, ch3Value);
+      analogWrite(ACC4, ch3Value);
+    } else {
+      analogWrite(ACC1, 0);
+      analogWrite(ACC2, 0);
+      analogWrite(ACC3, 0);
+      analogWrite(ACC4, 0);
+    }
+  } else {
   }
 
 
